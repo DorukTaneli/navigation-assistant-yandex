@@ -2,13 +2,17 @@ package com.example.navigationassistant
 
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.map.CameraPosition
+import com.yandex.mapkit.map.VisibleRegionUtils
 import com.yandex.mapkit.mapview.MapView
-
+import com.yandex.mapkit.search.SearchManager
+import com.yandex.mapkit.search.SearchOptions
+import com.yandex.mapkit.search.Session
 
 /**
  * This is a basic example that displays a map and sets camera focus on the target location.
@@ -22,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private val MAPKIT_API_KEY = "64f7d05c-b2e2-48fd-b058-a7927cd25383"
     private val TARGET_LOCATION = Point(41.091321, 29.061352)
     private var mapView: MapView? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         /**
          * Set the api key before calling initialize on MapKitFactory.
@@ -35,6 +40,7 @@ class MainActivity : AppCompatActivity() {
          * Initializing in the Application.onCreate method may lead to extra calls and increased battery use.
          */
         MapKitFactory.initialize(this)
+
         // Now MapView can be created.
         setContentView(R.layout.activity_main)
         super.onCreate(savedInstanceState)
